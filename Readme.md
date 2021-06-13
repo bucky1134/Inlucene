@@ -11,6 +11,7 @@ create a config.py file in converter folder and place the ip/dns of elastic sear
 config={
 IP:'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 }
+*******/\n
 
 Note: This is pretty much basic but very effective .
 1.compile: compile button translate sql to valid elsatic json
