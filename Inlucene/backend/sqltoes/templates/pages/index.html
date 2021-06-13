@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+h3{
+  color:red;
+
+}
+.my-custom-scrollbar {
+position: relative;
+height: 500px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+.info {
+  background-color: #e7f3fe;
+  border-left: 3px solid #2196F3;
+}
+</style>
+<script>
+  function loadoutput(){
+    b="{{output}}";
+    x=String(b);
+    x=x.replace(/&quot;/g,'"');
+    ugly=JSON.parse(x);
+    pretty=JSON.stringify(ugly,undefined,2);
+    document.getElementById('output').value =pretty; 
+  }
+function inputload(){
+  var x=String("{{input}}");
+  x=x.replace(/&#x27;/g,"'").replace(/&#39;/g,"'").replace(/&quot;/g,"'");
+  document.getElementById("sqlquery").value=x;
+}
+</script>
+<div class="container">
+  <div class="col-md-12">
+  <h3>SQL to Lucene query converter</h3>
+  <h6>Place SQL in the text area below, then click <span><b>Compile</b></span></h6>
+  <form form action="{% url 'convert' %}" method="POST">
+    {% csrf_token %}
+      <textarea class="form-control" id="sqlquery" name="sqlquery" rows='6'></textarea>
+      {% if input %}
+      <script>inputload();</script>
+      {% endif %}
+      <br/>
+       <div class="info">
+       <p><strong>Note!</strong> Use of wildcards,like operator,order by,aggregation function(EXCEPT Count) are not allowed..</p>
+        </div>
+
+      <input type="submit" name="compile" value="Compile" class="btn btn-primary" style="margin-top: 3px;" />
+      <input type="submit" name="compileandrun" value="Compile-Run" class="btn btn-primary" style="margin-top: 3px;" />
+      </form>
+      <span id="invalid"></span>
+      {% if invalid %}
+      <script> document.getElementById('invalid').innerHTML ="{{invalid}}"</script>
+      {% endif %}
+      {% if count %}
+      <h3><b>Results({{count}})</b></h3>
+      <hr>
+      {% endif %}
+      {% if gtable %}
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          {{ gtable|safe }}
+  </div>
+      {% endif %}
+      {% if out %}
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-bordered table-striped mb-2">
+        <thead class="thead-dark">
+          <tr>
+            {% for key in out.0 %}
+            <th scope="col">{{key}}</th>
+      {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for res in out %}
+          <tr>
+            {% for i,j in res.items %}
+            <td>{{j}}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+      {% endif %}
+      {% if output %}
+      <textarea class="form-control" id="output" name="output" rows='10'></textarea>
+      <script>loadoutput();</script>
+      {% endif %}
+</div>
+</div>
+{% endblock %}

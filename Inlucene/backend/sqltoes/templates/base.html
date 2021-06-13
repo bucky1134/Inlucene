@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+  <title>Innovaccer</title>
+  <head>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vishal.css' %}">
+    <style>
+    </style>
+  </head>
+<body class="body">
+  {% include 'partials/navbar.html' %}
+  {% block content%} {% endblock%}
+</body>
+
+</html>
