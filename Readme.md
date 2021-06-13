@@ -11,11 +11,11 @@ create a config.py file in converter folder and place the ip/dns of elastic sear
 config={
 IP:'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 }
-*******/\n
+*******/<br/>
 
-Note: This is pretty much basic but very effective .
-1.compile: compile button translate sql to valid elsatic json
-2.compile and run: ths button traslate to json and fetch the data from elastic and show in a tabular format on UI..
+Note: This is pretty much basic but very effective .<br/>
+1.compile: compile button translate sql to valid elsatic json<br/>
+2.compile and run: ths button traslate to json and fetch the data from elastic and show in a tabular format on UI..<br/>
 
 ![image](https://user-images.githubusercontent.com/50418448/121794383-40ec0d00-cc25-11eb-96fc-ab3fa5de1bbb.png)
 ![image](https://user-images.githubusercontent.com/50418448/121794422-7f81c780-cc25-11eb-8bd6-07888de4716f.png)
