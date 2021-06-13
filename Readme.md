@@ -14,6 +14,7 @@ IP:'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 *******/<br/>
 
 Note: This is pretty much basic but very effective .<br/>
+
 1.compile: compile button translate sql to valid elsatic json<br/>
 2.compile and run: ths button traslate to json and fetch the data from elastic and show in a tabular format on UI..<br/>
 
